@@ -4,8 +4,8 @@ import os
 
 st.set_page_config(page_title="Football Media Bot", page_icon="⚽")
 
-st.title("⚽ Match Day Video Stitcher")
-st.info("Stitching Intro + Interview + Outro (1080p Optimized)")
+st.title("🔴⚫ Town interview stitcher")
+st.info("Stitching Intro + Interview + Outro")
 
 INTRO_FILE = "intro.mp4"
 OUTRO_FILE = "outro.mp4"
