@@ -30,12 +30,17 @@ else:
                     "-i", INTRO_FILE,
                     "-i", TEMP_INTERVIEW,
                     "-i", OUTRO_FILE,
-                    "-filter_complex", "[0:v][0:a][1:v][1:a][2:v][2:a]concat=n=3:v=1:a=1[v][a]",
+                    "-filter_complex", 
+                    "[0:v]fps=30,scale=1920:1080[v0]; "
+                    "[1:v]fps=30,scale=1920:1080[v1]; "
+                    "[2:v]fps=30,scale=1920:1080[v2]; "
+                    "[v0][0:a][v1][1:a][v2][2:a]concat=n=3:v=1:a=1[v][a]",
                     "-map", "[v]", "-map", "[a]",
                     "-c:v", "libx264", 
-                    "-preset", "ultrafast",  # This is the fastest possible setting
-                    "-crf", "23",            # Maintains high visual quality
-                    "-pix_fmt", "yuv420p", 
+                    "-preset", "ultrafast", 
+                    "-crf", "23",
+                    "-r", "30",         # Hard-lock output to 30fps
+                    "-pix_fmt", "yuv420p",
                     FINAL_OUTPUT
                 ]
 
